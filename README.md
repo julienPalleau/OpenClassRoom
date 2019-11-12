@@ -1,2 +1,2 @@
 # OpenClassroom
- OpenClassroom exercices
+ OpenClassroom exercices and course
