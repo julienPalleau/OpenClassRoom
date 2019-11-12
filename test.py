@@ -248,6 +248,7 @@ mon_dictionnaire["pseudo"] = "6april"  # ecrase la valeur Prolixe
 print(mon_dictionnaire)
 
 # Parcourir un dictionnaire
+# Parcours des cles
 fruits = {"pomme": 21, "melon": 3, "poires": 31}
 for cle in fruits.keys():  # methode officiel on utilise la methode keys
     print(cle)
@@ -259,3 +260,14 @@ for mot in mon_dictionnaire:  # il est possible aussi de parcourir un dico
                              # car on est sure en lisant l'instruction, que c'est la liste des
                              # cles que l'on parcourt
     print(mot)
+
+print("\n")
+
+# Parcours des valeurs
+for valeur in fruits.values():
+    print(valeur)
+
+if 21 in fruits.values():
+    print("Un des fruits se trouve dans la quantite 21.")
+
+# Parcours des cles et des valeurs simultanement
