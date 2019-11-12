@@ -119,3 +119,77 @@ def decomposer(entier, divise_par):
 
 partie_entiere, reste = decomposer(20, 3)
 print("partie_entiere :{} et reste :{}".format(partie_entiere, reste))
+
+""" Entre chaines et listes """
+""" Des chaines aux listes """
+ma_chaine = "Bonjour à tous"
+# note que dans le cas ou l'on veut spliter sur un espace comme ici, il est possible
+print(ma_chaine.split(" "))
+# de simmplifier l'ecriture comme suit machaine.split()
+
+""" Des listes aux chaines """
+ma_liste = ['Bonjour', 'à', 'tous']
+print(" ".join(ma_liste))
+
+""" Une application pratique """
+
+
+def afficher_flottant(flottant):
+    """Fonction prenant en parametre un flottant et renvoyant une chaine de caractere
+    representant la troncature de ce nombre. La partie flottante doit avoir une longueur maximum
+    de 3 caracters.
+    De plus, on va remplacer le point decimal par la virgule """
+
+    if type(flottant) is not float:
+        raise TypeError("Le parametre attendu doit etre un flottant")
+    flottant = str(flottant)
+    partie_entiere, partie_flottante = flottant.split(".")
+    # La partie entiere n'est pas à modifier
+    # Seule la partie flottante doit etre tronquee
+    return ",".join([partie_entiere, partie_flottante[:3]])
+
+
+print(afficher_flottant(3.9999999999998))
+
+
+""" Les listes et parametres de fonctions """
+
+
+def fonction_inconnue(*parametres):
+    """Test d'une fonction pouvant etre appelee avec un nombre variable de parametres"""
+    print("J'ai recu {}.".format(parametres))
+
+
+fonction_inconnue()  # On appelle la fonction sans parametre
+fonction_inconnue(33)
+fonction_inconnue('a', 'e', 'f')
+var = 3.5
+fonction_inconnue(var, [4], "...")
+
+
+def afficher(*parametres, sep=' ', fin='\n'):
+    """ Fonction chargee de reproduire le comportement de print.
+    Elle doit finir par faire appel à print pour afficher le resultat.
+    Mais les parametres devront deja avoir ete formates.
+    On doit passe à print une unique chaine, en luis specifiant de ne rien mettre à la fin :
+     print(chaine,end='')"""
+
+    # Les parametres sont sous la forme d'u tuple
+    # Or on a besoin de les convertir
+    # Mais on ne peut pas modifier un tuple
+    # On a plusieurs possibilites, ici je choisis de convertir le tuple en liste
+    parametres = list(parametres)
+    # On va commencer par convertir toutes les valeurs en chaine
+    # Sinon on va avoir quelques problemes lors du join
+    for i, parametre in enumerate(parametres):
+        parametres[i] = str(parametre)
+    # La liste des parametres ne contient plus des chaines de caracteres
+    # A present on va constituer la chaine finale
+    chaine = sep.join(parametres)
+    # On ajoute le parametre fin à la fin de la chaine
+    chaine += fin
+    # On affiche l'ensemble
+    print(chaine, end='')
+
+
+afficher('un', 'deux', 'trois', 'quatre')
