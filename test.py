@@ -246,3 +246,16 @@ mon_dictionnaire["pseudo"] = "Prolixe"
 mon_dictionnaire["mot de passe"] = "*"
 mon_dictionnaire["pseudo"] = "6april"  # ecrase la valeur Prolixe
 print(mon_dictionnaire)
+
+# Parcourir un dictionnaire
+fruits = {"pomme": 21, "melon": 3, "poires": 31}
+for cle in fruits.keys():  # methode officiel on utilise la methode keys
+    print(cle)
+
+print("\n")
+
+for mot in mon_dictionnaire:  # il est possible aussi de parcourir un dico
+                             # via une boucle for classique mais preferer la methode officiel
+                             # car on est sure en lisant l'instruction, que c'est la liste des
+                             # cles que l'on parcourt
+    print(mot)
