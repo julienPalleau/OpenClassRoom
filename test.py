@@ -271,3 +271,5 @@ if 21 in fruits.values():
     print("Un des fruits se trouve dans la quantite 21.")
 
 # Parcours des cles et des valeurs simultanement
+for cle, valeur in fruits.items():
+    print("La cle {} contient la valeur {}.".format(cle, valeur))
