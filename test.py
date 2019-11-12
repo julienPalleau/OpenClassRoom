@@ -241,3 +241,7 @@ presences = [(nom, presence) for nom, presence in sorted(presences)]
 print(presences)
 
 # Creer un Dictionnaire
+mon_dictionnaire = {}  # initialisation du dictionnaire
+mon_dictionnaire["pseudo"] = "Prolixe"
+mon_dictionnaire["mot de passe"] = "*"
+print(mon_dictionnaire)
