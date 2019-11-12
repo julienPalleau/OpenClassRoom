@@ -193,3 +193,49 @@ def afficher(*parametres, sep=' ', fin='\n'):
 
 
 afficher('un', 'deux', 'trois', 'quatre')
+
+""" Les comprehensions de liste """
+""" Parcours simple """
+liste_origine = [0, 1, 2, 3, 4, 5]
+print([nb**2 for nb in liste_origine])
+
+""" Filtrage avec un branchement conditionnel """
+liste_origine = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print([nb for nb in liste_origine if nb % 2 == 0])
+
+""" Melangeons un peu tout cela """
+qtt_a_retirer = 7  # On retire chaque semain 7 fruits de chaque sorte
+fruits_stockes = [15, 3, 18, 21]  # Par exemple 15 pommes, 3 melons etc...
+print([nb_fruits-qtt_a_retirer for nb_fruits in fruits_stockes if nb_fruits > qtt_a_retirer])
+
+""" Nouvelle application concrete """
+inventaire = [
+    ("pommes", 22),
+    ("melons", 4),
+    ("poires", 18),
+    ("fraises", 76),
+    ("prunes", 51),
+]
+
+# On change le sens de l'inventaire, la quantite avant le nom
+inventaire_inverse = [(qtt, nom_fruit) for nom_fruit, qtt in inventaire]
+
+# On n'a plus qu'à trier dans l'ordre decroissant l'invantaire inverse
+# On reconstitue l'inventaire trie
+inventaire = [(nom_fruit, qtt)
+              for qtt, nom_fruit in sorted(inventaire_inverse, reverse=True)]
+print(inventaire)
+
+""" Tests """
+presences = [
+    ("Julien", "present"),
+    ("Lucie", "presente"),
+    ("Tom", "present"),
+    ("Eliott", "present"),
+]
+
+for nom, presence in sorted(presences):
+    print(nom, presence)
+
+presences = [(nom, presence) for nom, presence in sorted(presences)]
+print(presences)
