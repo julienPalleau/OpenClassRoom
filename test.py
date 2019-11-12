@@ -244,4 +244,5 @@ print(presences)
 mon_dictionnaire = {}  # initialisation du dictionnaire
 mon_dictionnaire["pseudo"] = "Prolixe"
 mon_dictionnaire["mot de passe"] = "*"
+mon_dictionnaire["pseudo"] = "6april"  # ecrase la valeur Prolixe
 print(mon_dictionnaire)
