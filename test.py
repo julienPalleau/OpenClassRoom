@@ -226,7 +226,7 @@ inventaire = [(nom_fruit, qtt)
               for qtt, nom_fruit in sorted(inventaire_inverse, reverse=True)]
 print(inventaire)
 
-""" Tests """
+""" Exercices """
 presences = [
     ("Julien", "present"),
     ("Lucie", "presente"),
@@ -273,3 +273,30 @@ if 21 in fruits.values():
 # Parcours des cles et des valeurs simultanement
 for cle, valeur in fruits.items():
     print("La cle {} contient la valeur {}.".format(cle, valeur))
+
+print("\n")
+""" Exercices """
+inventaire2 = dict()
+inventaire2["isolation sols"] = 50
+inventaire2["isolations combles perdus"] = 70
+inventaire2["isolation integre"] = 125
+inventaire2["isolation murs"] = 120
+inventaire2["isolation combles amenages"] = 120
+inventaire2["isolation par l'exterieur"] = 120
+
+
+for cle, valeur in inventaire2.items():
+    print("la cle {} contient la valeur {}".format(cle, valeur))
+
+""" Les dictionnaires et parametres de fonction """
+
+
+def fonction_inconnue2(**parametres_nommes):
+    """ Fonction permettant de voir comment recuperer les parametres nommes
+    dans un dictionnaire """
+
+    print("J'ai recu en parametre nommes : {}.".format(parametres_nommes))
+
+
+fonction_inconnue2()  # Aucun parametre
+fonction_inconnue2(p=4, j=8)
