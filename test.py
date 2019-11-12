@@ -100,3 +100,22 @@ for elt in ma_liste:  # elt va prendre les valeurs successives des elements de m
 
 for elt in enumerate(ma_liste):
     print(elt)
+
+""" Un petit coup d'oeil aux tuples """
+tuple_vide = ()
+tuple_non_vide = (1,)  # est equivalent à ci-dessous
+tuple_non_vide = 1,
+tuple_avec_plusieurs_valeurs = (1, 2, 5)
+
+
+def decomposer(entier, divise_par):
+    """ Cette fonction retourne la partie entiere et le reste de 
+    entier / divise_par"""
+
+    p_e = entier // divise_par
+    reste = entier % divise_par
+    return p_e, reste
+
+
+partie_entiere, reste = decomposer(20, 3)
+print("partie_entiere :{} et reste :{}".format(partie_entiere, reste))
