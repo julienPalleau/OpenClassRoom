@@ -239,3 +239,5 @@ for nom, presence in sorted(presences):
 
 presences = [(nom, presence) for nom, presence in sorted(presences)]
 print(presences)
+
+# Creer un Dictionnaire
