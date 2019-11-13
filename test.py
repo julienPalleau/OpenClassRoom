@@ -1,3 +1,7 @@
+import pickle
+import os
+
+
 """ Example d'import d'un fichier ic multipli contenant des informations necessair à l'execution du programme"""
 """
 import os
@@ -25,6 +29,7 @@ print(ma_liste)
 ma_liste = [1, 3.5, "une chaine", []]
 # objets de types differents: un entier, un flottant, une chaine de caracteres et... une autre liste.
 
+
 """ Voyons à present comment acceder aux elements d'une liste """
 ma_liste = ['c', 'f', 'm']
 print(ma_liste)
@@ -33,6 +38,7 @@ ma_liste[2]  # Troisieme element 'm'
 ma_liste[1] = 'Z'  # On remplace 'f' par 'z'
 print(ma_liste)
 # contrairement à la classe str, la classe list vous permet de remplacer un element par un autre. les listes sont mutable
+
 
 """ Inserer des objets dans une liste """
 # ajouter un element à la fin de la liste
@@ -56,6 +62,7 @@ ma_liste1 = [3, 4, 5]
 ma_liste1 += ma_liste2  # Identique à extend
 print(ma_liste1)
 
+
 """ Suppression d'elements d'une liste """
 # Le mot clef del
 variable = 34
@@ -75,6 +82,7 @@ print(ma_liste)
 ma_liste = [31, 32, 33, 34, 35]
 ma_liste.remove(32)
 print(ma_liste)
+
 
 """ Le Parcours de listes """
 ma_liste = ['a', 'b', 'd', 'e', 'f', 'g', 'h']
@@ -101,6 +109,7 @@ for elt in ma_liste:  # elt va prendre les valeurs successives des elements de m
 for elt in enumerate(ma_liste):
     print(elt)
 
+
 """ Un petit coup d'oeil aux tuples """
 tuple_vide = ()
 tuple_non_vide = (1,)  # est equivalent à ci-dessous
@@ -120,6 +129,7 @@ def decomposer(entier, divise_par):
 partie_entiere, reste = decomposer(20, 3)
 print("partie_entiere :{} et reste :{}".format(partie_entiere, reste))
 
+
 """ Entre chaines et listes """
 """ Des chaines aux listes """
 ma_chaine = "Bonjour à tous"
@@ -127,9 +137,11 @@ ma_chaine = "Bonjour à tous"
 print(ma_chaine.split(" "))
 # de simmplifier l'ecriture comme suit machaine.split()
 
+
 """ Des listes aux chaines """
 ma_liste = ['Bonjour', 'à', 'tous']
 print(" ".join(ma_liste))
+
 
 """ Une application pratique """
 
@@ -194,19 +206,23 @@ def afficher(*parametres, sep=' ', fin='\n'):
 
 afficher('un', 'deux', 'trois', 'quatre')
 
+
 """ Les comprehensions de liste """
 """ Parcours simple """
 liste_origine = [0, 1, 2, 3, 4, 5]
 print([nb**2 for nb in liste_origine])
 
+
 """ Filtrage avec un branchement conditionnel """
 liste_origine = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 print([nb for nb in liste_origine if nb % 2 == 0])
+
 
 """ Melangeons un peu tout cela """
 qtt_a_retirer = 7  # On retire chaque semain 7 fruits de chaque sorte
 fruits_stockes = [15, 3, 18, 21]  # Par exemple 15 pommes, 3 melons etc...
 print([nb_fruits-qtt_a_retirer for nb_fruits in fruits_stockes if nb_fruits > qtt_a_retirer])
+
 
 """ Nouvelle application concrete """
 inventaire = [
@@ -225,6 +241,7 @@ inventaire_inverse = [(qtt, nom_fruit) for nom_fruit, qtt in inventaire]
 inventaire = [(nom_fruit, qtt)
               for qtt, nom_fruit in sorted(inventaire_inverse, reverse=True)]
 print(inventaire)
+
 
 """ Exercices """
 presences = [
@@ -288,6 +305,7 @@ inventaire2["isolation par l'exterieur"] = 120
 for cle, valeur in inventaire2.items():
     print("la cle {} contient la valeur {}".format(cle, valeur))
 
+
 """ Les dictionnaires et parametres de fonction """
 
 
@@ -300,3 +318,38 @@ def fonction_inconnue2(**parametres_nommes):
 
 fonction_inconnue2()  # Aucun parametre
 fonction_inconnue2(p=4, j=8)
+
+
+""" Utilisez des fichiers """
+print(os.getcwd())
+os.chdir("C:/Users/MOTTIER LUCIE/Documents/GitHub/OpenClassroom")
+print(os.getcwd())
+
+""" Lecture d'un fichier """
+with open("fichier.txt", "r") as nom_fichier:
+    contenu = nom_fichier.read()
+    print(contenu)
+
+
+""" Ecriture dans un fichier """
+with open("fichier.txt", "w") as nom_fichier:  # Argh j'ai tout ecrase !
+    nom_fichier.write("Second test d'ecriture dans un fichier via Python")
+
+""" Enregistrer des objets dans des fichiers """
+score = {
+    "Joueur 1": 5,
+    "Joueur 2": 35,
+    "Joueur 3": 20,
+    "Joueur 4": 2,
+}
+
+# enregistrement ...
+with open('donnees', 'wb') as fichier:
+    mon_pickler = pickle.Pickler(fichier)
+    mon_pickler.dump(score)
+
+""" Recuperer nos objets enregistres """
+with open('donnees', 'rb') as fichier:
+    mon_depickler = pickle.Unpickler(fichier)
+    score_recupere = mon_depickler.load()
+    print(score_recupere)
