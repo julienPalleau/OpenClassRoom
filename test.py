@@ -354,4 +354,36 @@ with open('donnees', 'rb') as fichier:
     score_recupere = mon_depickler.load()
     print(score_recupere)
 
-# this is a git test
+""" Decouvrez la portee des variables et les references """
+""" La portee des variables """
+
+
+def set_var(nouvelle_valeur):
+    """Fonction nous permettant de tester la portee des variables
+    definies dans notre corps de fonction"""
+
+    # On essaye d'afficher la variable var, si elle existe
+    try:
+        print("Avant l'affectation, notre variable var vaut {0}".format(var))
+    except NameError:
+        print("La variable var n'existe pas encore.")
+    var = nouvelle_valeur
+    print("Apres l'affectation, notre variable var vaut {0}".format(var))
+
+
+set_var(5)
+
+""" Utiliser concretement les variables globales """
+i = 4  # Une variable, nommee i, contenant un entier
+
+
+def inc_i():
+    """ Fonction chargee d'incrementer id de 1"""
+    # Python recherce i en dehors de l'espace local de la fonction
+    global i
+    i += 1
+
+
+print(i)
+inc_i()
+print(i)
