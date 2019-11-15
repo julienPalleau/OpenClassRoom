@@ -1,4 +1,8 @@
 from random import randint
+from donnees import *
+
+motRecherche = liste_mots[randint(0, 11)]
+motInconnu = "--------"
 
 
 def bienvenue():
@@ -11,6 +15,27 @@ def bienvenue():
     return regles
 
 
-def nomjoueur():
+def nomJoueur():
     prenom = input("Veuillez saisir votre prenom:")
     return prenom
+
+
+def choisiUnMot():
+    return(motRecherche)
+
+
+def affichageInitial():
+    return motInconnu
+
+
+def trouveLesLetrres(lettreRecherche):
+    i = 0
+    for lettreMot in motRecherche:
+        Sequence1 = motInconnu[:i]
+        Sequence2 = motInconnu[i:]
+        if (lettreMot == lettreRecherche):
+            result = Sequence1+lettreRecherche+Sequence2
+        else:
+            result = '0'
+        i += 1
+    return(result)
