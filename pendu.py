@@ -1,8 +1,6 @@
 from fonctions import *
 from donnees import *
 
-pendu = ""
-
 print("Vore prenom est : {}".format(nomJoueur()))
 print("\n")
 print(bienvenue())
@@ -23,20 +21,21 @@ while(nb_coups > 0):
         print("la lettre n'appartient pas au mot")
         nb_coups -= 1
     else:
-        i = 0
+        i = 1
         print("vous avez trouve la lettre {}".format(lettreChoisieParLeJoueur))
         for lettremot in motRecherche:
-            print("Debug valeur de i: {} valeur de indice: {}".format(i, indice))
+            print("Debug valeur de i: {} valeur de indice: {} lettremot {}".format(
+                i, indice, lettremot))
             if ((i) == indice):
-                pendu += lettremot
-            else:
-                pendu += "-"
-            print("DEBUG : {}".format(pendu))
+                Sequence1 = motInconnu[:i-1]
+                Sequence2 = motInconnu[i:]
+                print("Debug8 {} + {} + {}".format(Sequence1, lettremot, Sequence2))
+                motInconnu = Sequence1 + lettremot + Sequence2
             i += 1
 
         if (nb_coups < 8):
             nb_coups += 1
-        print("PENDU : {}".format(pendu))
+        print("PENDU : {}".format(motInconnu))
 
     print("Nombre de coups restants: {}".format(nb_coups))
     if (nb_coups > 0):

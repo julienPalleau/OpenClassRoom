@@ -27,18 +27,24 @@ def affichageInitial():
 def trouveLesLetrres(lettreRecherche):
     i = 0
     code = 1
-    result = 0
+    #result = []
+
     print("Debug5 {}".format(motRecherche))
     for lettreMot in motRecherche:
         i += 1
-        #Sequence1 = motRecherche[:i]
-        #Sequence2 = motRecherche[i:]
-        #print("Debug6 {}".format(Sequence1))
-        #print("Debug7 {}".format(Sequence2))
-        #print("Debug8 {} + {}".format(Sequence1, Sequence2))
+        # Sequence1 = motRecherche[:i]
+        # Sequence2 = motRecherche[i:]
+        # motRecherche = Sequence1 + Sequence2
+        # print("Debug6 {}".format(Sequence1))
+        # print("Debug7 {}".format(Sequence2))
+        # print("Debug8 {} + {}".format(Sequence1, Sequence2))
+        print("Debug8 + lettre mot: {} lettre recherche {} mot inconnu {}".format(
+            lettreMot, lettreRecherche, motInconnu[i-1]))
         if (lettreMot == lettreRecherche):
             code = 0
             result = i
+            print("motRecherche {} lettreMot {}".format(motRecherche, lettreMot))
+            print("Debug9 {}".format(motRecherche.replace(lettreMot, "")))
 
         # else:
         #    result += "-"
