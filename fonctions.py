@@ -26,11 +26,10 @@ def affichageInitial():
 
 def trouveLesLetrres(lettreRecherche):
     i = 0
-    j = 0
     code = 1
-    result = []
+    #result = []
 
-    print("Debug10: {}".format(motRecherche))
+    print("Debug5 {}".format(motRecherche))
     for lettreMot in motRecherche:
         i += 1
         # Sequence1 = motRecherche[:i]
@@ -39,16 +38,13 @@ def trouveLesLetrres(lettreRecherche):
         # print("Debug6 {}".format(Sequence1))
         # print("Debug7 {}".format(Sequence2))
         # print("Debug8 {} + {}".format(Sequence1, Sequence2))
-        print("Debug11: + lettre mot: {} lettre recherche {} mot inconnu {}".format(
+        print("Debug8 + lettre mot: {} lettre recherche {} mot inconnu {}".format(
             lettreMot, lettreRecherche, motInconnu[i-1]))
         if (lettreMot == lettreRecherche):
             code = 0
-            print("Debug12: i: {} et j:{}".format(i, j))
-            result.append(i)
-            print("Debug13: motRecherche {} lettreRecherche {}".format(
-                motRecherche, lettreRecherche))
-            #print("Debug14: {}".format(motRecherche.replace(lettreRecherche, "")))
-            j += 1
+            result = i
+            print("motRecherche {} lettreMot {}".format(motRecherche, lettreMot))
+            print("Debug9 {}".format(motRecherche.replace(lettreMot, "")))
 
         # else:
         #    result += "-"
