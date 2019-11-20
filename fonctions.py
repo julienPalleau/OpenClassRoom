@@ -27,7 +27,7 @@ def affichageInitial():
 def trouveLesLetrres(lettreRecherche):
     i = 0
     code = 1
-    #result = []
+    result = []
 
     print("Debug5 {}".format(motRecherche))
     for lettreMot in motRecherche:
@@ -42,7 +42,7 @@ def trouveLesLetrres(lettreRecherche):
             lettreMot, lettreRecherche, motInconnu[i-1]))
         if (lettreMot == lettreRecherche):
             code = 0
-            result = i
+            result.append(i)
             print("motRecherche {} lettreMot {}".format(motRecherche, lettreMot))
             print("Debug9 {}".format(motRecherche.replace(lettreMot, "")))
 

@@ -1,5 +1,6 @@
 from fonctions import *
 from donnees import *
+test = 1
 
 print("Vore prenom est : {}".format(nomJoueur()))
 print("\n")
@@ -8,35 +9,47 @@ print("\n")
 print(liste_mots)
 print("\n")
 print("Trouvez le mot suivant {}".format(affichageInitial()))
-lettreChoisieParLeJoueur = input("Choisissez votre premiere lettre: ")
+print("Debug0: le mot recherche est {}".format(motRecherche))
 
-while(nb_coups > 0):
-    print("Debug1 {}".format(lettreChoisieParLeJoueur))
+
+while(nb_coups > 0 and "-" in motInconnu):
+    lettreChoisieParLeJoueur = input("Choisissez votre premiere lettre: ")
+    print("Debug1 Lettre choise par le joueur: {}".format(lettreChoisieParLeJoueur))
     codeRetour = trouveLesLetrres(lettreChoisieParLeJoueur)['code']
     indice = trouveLesLetrres(lettreChoisieParLeJoueur)['indice']
 
-    print("Debug2 codeRetour {} et indice {}".format(codeRetour, indice))
-    print("Debug3 {}".format(lettreChoisieParLeJoueur))
+    # print("Debug2 codeRetour: {}, longueur de la liste indice: {} et valeur de l'indice {}".format(
+    #    codeRetour, len(indice), indice))
+    print("Debug3 Lettre choise par le joueur: {}".format(lettreChoisieParLeJoueur))
     if (codeRetour == 1):
-        print("la lettre n'appartient pas au mot")
+        print("Debug4 la lettre {} n'appartient pas au mot".format(
+            lettreChoisieParLeJoueur))
         nb_coups -= 1
     else:
-        i = 1
-        print("vous avez trouve la lettre {}".format(lettreChoisieParLeJoueur))
-        for lettremot in motRecherche:
-            print("Debug valeur de i: {} valeur de indice: {} lettremot {}".format(
-                i, indice, lettremot))
-            if ((i) == indice):
+        i = 0
+
+        for i in indice:
+            print("Debug5 La valeur de i est: {}, la lettre du mot recherche est: {}, la lettre choisie par le joueur est: {}".format(
+                i, motRecherche[i-1], lettreChoisieParLeJoueur))
+            if (motRecherche[i-1] == lettreChoisieParLeJoueur):
+                print("Debug6 vous avez trouve la lettre {} longueur du mot recherche {}".format(
+                    lettreChoisieParLeJoueur, len(motRecherche)))
                 Sequence1 = motInconnu[:i-1]
                 Sequence2 = motInconnu[i:]
-                print("Debug8 {} + {} + {}".format(Sequence1, lettremot, Sequence2))
-                motInconnu = Sequence1 + lettremot + Sequence2
+                print("Debug7: Sequence1: {} + lettreChoisiParLeJoueur: {} + Sequence2: {}".format(Sequence1,
+                                                                                                   lettreChoisieParLeJoueur, Sequence2))
+                motInconnu = Sequence1 + lettreChoisieParLeJoueur + Sequence2
             i += 1
 
+        print("Debug8: PENDU : {}".format(motInconnu))
+
+"""
         if (nb_coups < 8):
             nb_coups += 1
-        print("PENDU : {}".format(motInconnu))
 
-    print("Nombre de coups restants: {}".format(nb_coups))
+        print("\n\n\n\n\n")
+
+    print("Debug9: Nombre de coups restants: {}".format(nb_coups))
     if (nb_coups > 0):
         lettreChoisieParLeJoueur = input("Choisissez une autre lettre: ")
+"""
