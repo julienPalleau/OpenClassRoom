@@ -22,8 +22,9 @@ while(nb_coups > 0 and "-" in motInconnu):
     #    codeRetour, len(indice), indice))
     print("Debug3 Lettre choise par le joueur: {}".format(lettreChoisieParLeJoueur))
     if (codeRetour == 1):
-        print("Debug4 la lettre {} n'appartient pas au mot".format(
-            lettreChoisieParLeJoueur))
+        print("Debug4 la lettre {} n'appartient pas au mot. Il vous reste {} coups".format(
+            lettreChoisieParLeJoueur, nb_coups))
+
         nb_coups -= 1
     else:
         i = 0
@@ -49,7 +50,7 @@ while(nb_coups > 0 and "-" in motInconnu):
 
         print("\n\n\n\n\n")
 
-    print("Debug9: Nombre de coups restants: {}".format(nb_coups))
+    
     if (nb_coups > 0):
         lettreChoisieParLeJoueur = input("Choisissez une autre lettre: ")
 """
