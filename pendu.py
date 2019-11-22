@@ -11,10 +11,11 @@ print("\n")
 print("Trouvez le mot suivant {}".format(affichageInitial()))
 print("Debug0: le mot recherche est {}".format(motRecherche))
 
-
 while(nb_coups > 0 and "-" in motInconnu):
-    lettreChoisieParLeJoueur = input("Choisissez votre premiere lettre: ")
+    lettreChoisieParLeJoueur = input("Choisissez une lettre: ")
+
     print("Debug1 Lettre choise par le joueur: {}".format(lettreChoisieParLeJoueur))
+
     codeRetour = trouveLesLetrres(lettreChoisieParLeJoueur)['code']
     indice = trouveLesLetrres(lettreChoisieParLeJoueur)['indice']
 
@@ -22,10 +23,9 @@ while(nb_coups > 0 and "-" in motInconnu):
     #    codeRetour, len(indice), indice))
     print("Debug3 Lettre choise par le joueur: {}".format(lettreChoisieParLeJoueur))
     if (codeRetour == 1):
+        nb_coups -= 1
         print("Debug4 la lettre {} n'appartient pas au mot. Il vous reste {} coups".format(
             lettreChoisieParLeJoueur, nb_coups))
-
-        nb_coups -= 1
     else:
         i = 0
 
@@ -44,13 +44,15 @@ while(nb_coups > 0 and "-" in motInconnu):
 
         print("Debug8: PENDU : {}".format(motInconnu))
 
-"""
-        if (nb_coups < 8):
-            nb_coups += 1
+    print("\n\n\n\n\n")
 
-        print("\n\n\n\n\n")
+print("Debug:{}".format(score))
+print('Debug8: Calcul du score:{} nb dash: {}'.format(
+    motInconnu, motInconnu.count('-')))
 
-    
-    if (nb_coups > 0):
-        lettreChoisieParLeJoueur = input("Choisissez une autre lettre: ")
-"""
+if (motInconnu.count('-') == 0):
+    print("Bravo ! Votre Score est de: {} points".format(
+        calculScores(motInconnu.count('-'))))
+else:
+    print("Votre Score est de: {} points".format(
+        calculScores(motInconnu.count('-'))))

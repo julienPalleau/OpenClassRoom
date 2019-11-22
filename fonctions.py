@@ -1,4 +1,6 @@
 from donnees import *
+import os
+import pickle
 
 
 def bienvenue():
@@ -29,7 +31,7 @@ def trouveLesLetrres(lettreRecherche):
     code = 1
     result = []
 
-    print("Debug5 {}".format(motRecherche))
+    print("Debug9 {}".format(motRecherche))
     for lettreMot in motRecherche:
         i += 1
         # Sequence1 = motRecherche[:i]
@@ -38,14 +40,33 @@ def trouveLesLetrres(lettreRecherche):
         # print("Debug6 {}".format(Sequence1))
         # print("Debug7 {}".format(Sequence2))
         # print("Debug8 {} + {}".format(Sequence1, Sequence2))
-        print("Debug8 + lettre mot: {} lettre recherche {} mot inconnu {}".format(
+        print("Debug10 + lettre mot: {} lettre recherche {} mot inconnu {}".format(
             lettreMot, lettreRecherche, motInconnu[i-1]))
         if (lettreMot == lettreRecherche):
             code = 0
             result.append(i)
             print("motRecherche {} lettreMot {}".format(motRecherche, lettreMot))
-            print("Debug9 {}".format(motRecherche.replace(lettreMot, "")))
+            print("Debug11 {}".format(motRecherche.replace(lettreMot, "")))
 
         # else:
         #    result += "-"
     return {'code': code, 'indice': result}
+
+
+def calculScores(nbdash):
+    score = nb_coups - nbdash
+    # Le score du joueur sera simple à calculer :
+    # on prend le score courant (0 si le joueur
+    # n'a aucun score déjà enregistré) et, à chaque
+    # partie, on lui ajoute le nombre de coups restants
+    # comme points de partie. Si, par exemple, il me
+    # reste trois coups au moment où je trouve le mot,
+    # je gagne trois points.
+    return(score)
+
+
+"""
+def sauvegarde():
+    os.chdir("C:/Users/MOTTIER LUCIE/Documents/GitHub/OpenClassroom")
+    with open('scores','wb') as fichier:
+        mon_pickler = pickle.Pickler(fichier)"""
