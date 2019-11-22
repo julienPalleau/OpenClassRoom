@@ -65,8 +65,8 @@ def calculScores(nbdash):
     return(score)
 
 
-"""
-def sauvegarde():
+def sauvegarde(scores):
     os.chdir("C:/Users/MOTTIER LUCIE/Documents/GitHub/OpenClassroom")
-    with open('scores','wb') as fichier:
-        mon_pickler = pickle.Pickler(fichier)"""
+    with open('scores', 'wb') as fichier:
+        mon_pickler = pickle.Pickler(fichier)
+        mon_pickler.dump(scores)

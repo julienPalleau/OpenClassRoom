@@ -56,3 +56,6 @@ if (motInconnu.count('-') == 0):
 else:
     print("Votre Score est de: {} points".format(
         calculScores(motInconnu.count('-'))))
+
+scores = {nomJoueur(): calculScores(motInconnu.count('-'))}
+sauvegarde(scores)

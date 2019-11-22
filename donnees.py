@@ -2,6 +2,7 @@
 from random import randint
 nb_coups = 8
 score = 0
+
 liste_mots = ["pyromane", "lucioles", "turbines",
               "laiterie", "monstres", "software",
               "creneaux", "savoyard", "poulines",
