@@ -5,7 +5,7 @@ score = 0
 liste_mots = ["pyromane", "lucioles", "turbines",
               "laiterie", "monstres", "software",
               "creneaux", "savoyard", "poulines",
-              "plombier", "mobilier", "detracte"
+              "plombier", "mobilier", "detracte",
               "receveur", "ultrason", "tonnelle"]
 motRecherche = liste_mots[randint(0, 11)]
 motInconnu = "--------"
