@@ -1,8 +1,9 @@
 from fonctions import *
 from donnees import *
 test = 1
+nomJoueur = nomJoueur()
 
-print("Vore prenom est : {}".format(nomJoueur()))
+print("Vore prenom est : {}".format(nomJoueur))
 print("\n")
 print(bienvenue())
 print("\n")
@@ -10,6 +11,28 @@ print(liste_mots)
 print("\n")
 print("Trouvez le mot suivant {}".format(affichageInitial()))
 print("Debug0: le mot recherche est {}".format(motRecherche))
+
+print("lecture du fichier:")
+mon_fichier = open("scores", "rb")
+mon_depickler = pickle.Unpickler(mon_fichier)
+contenu = mon_depickler.load()
+print(contenu)
+mon_fichier.close()
+
+
+for cle in contenu.keys():
+    nomJoueurSauvegarde = cle
+
+for valeur in contenu.values():
+    scoreJoueurSauvegarde = valeur
+
+print("DEBUG nomJoueur {} et contenu.keys {}".format(
+    nomJoueur, nomJoueurSauvegarde))
+
+if (nomJoueur == nomJoueurSauvegarde):
+    print("Bonjour {} votre precendent score etait: {}".format(
+        nomJoueurSauvegarde, scoreJoueurSauvegarde))
+
 
 while(nb_coups > 0 and "-" in motInconnu):
     lettreChoisieParLeJoueur = input("Choisissez une lettre: ")
