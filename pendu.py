@@ -75,10 +75,11 @@ print('Debug8: Calcul du score:{} nb dash: {}'.format(
 
 if (motInconnu.count('-') == 0):
     print("Bravo ! Votre Score est de: {} points".format(
-        calculScores(motInconnu.count('-'))))
+        calculScores(motInconnu.count('-'), scoreJoueurSauvegarde)))
 else:
     print("Votre Score est de: {} points".format(
-        calculScores(motInconnu.count('-'))))
+        calculScores(motInconnu.count('-'), scoreJoueurSauvegarde)))
 
-scores = {nomJoueur(): calculScores(motInconnu.count('-'))}
+scores = {nomJoueur: calculScores(
+    motInconnu.count('-'), scoreJoueurSauvegarde)}
 sauvegarde(scores)

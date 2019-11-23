@@ -53,8 +53,8 @@ def trouveLesLetrres(lettreRecherche):
     return {'code': code, 'indice': result}
 
 
-def calculScores(nbdash):
-    score = nb_coups - nbdash
+def calculScores(nbdash, scoreSauvegarde):
+    score = (nb_coups - nbdash) + scoreSauvegarde
     # Le score du joueur sera simple à calculer :
     # on prend le score courant (0 si le joueur
     # n'a aucun score déjà enregistré) et, à chaque
