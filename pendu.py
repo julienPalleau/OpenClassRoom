@@ -2,6 +2,7 @@ from fonctions import *
 from donnees import *
 test = 1
 nomJoueur = nomJoueur()
+scoreJoueurSauvegarde = 0
 
 print("Vore prenom est : {}".format(nomJoueur))
 print("\n")
@@ -23,8 +24,9 @@ mon_fichier.close()
 for cle in contenu.keys():
     nomJoueurSauvegarde = cle
 
-for valeur in contenu.values():
-    scoreJoueurSauvegarde = valeur
+if (nomJoueur == nomJoueurSauvegarde):
+    for valeur in contenu.values():
+        scoreJoueurSauvegarde = valeur
 
 print("DEBUG nomJoueur {} et contenu.keys {}".format(
     nomJoueur, nomJoueurSauvegarde))
