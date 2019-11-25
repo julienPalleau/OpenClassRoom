@@ -54,15 +54,15 @@ def trouveLesLetrres(lettreRecherche):
 
 
 def calculScores(nbdash, scoreSauvegarde):
+    """Le score du joueur sera simple à calculer :
+    on prend le score courant (0 si le joueur
+    n'a aucun score déjà enregistré) et, à chaque
+    partie, on lui ajoute le nombre de coups restants
+    comme points de partie. Si, par exemple, il me
+    reste trois coups au moment où je trouve le mot,
+    je gagne trois points.
     score = (nb_coups - nbdash) + scoreSauvegarde
-    # Le score du joueur sera simple à calculer :
-    # on prend le score courant (0 si le joueur
-    # n'a aucun score déjà enregistré) et, à chaque
-    # partie, on lui ajoute le nombre de coups restants
-    # comme points de partie. Si, par exemple, il me
-    # reste trois coups au moment où je trouve le mot,
-    # je gagne trois points.
-    return(score)
+    return(score)"""
 
 
 def sauvegarde(scores):
