@@ -303,3 +303,48 @@ inventaire = [
 # On veut trier cette liste par prix et par quantite
 print("Trie de la liste par prix et par quantite:")
 print(sorted(inventaire, key=attrgetter("prix", "quantite")))
+
+
+""" Gerer les heritages """
+# Creation d'excptions personnalisees
+
+
+class MonException(Exception):
+    """Exception levee dans un certain contexte... qui reste à definir"""
+
+    def __init__(self, message):
+        """On se contente de stocker le message d'erreur"""
+        self.message = message
+
+    def __str__(self):
+        """On renvoie le message"""
+        return self.message
+
+
+#raise MonException("OUPS... j'ai tout casse")
+
+
+class ErreurAnalyseFichier(Exception):
+    """Cette exception est levee quand un fichier (de configuration)
+    n'a pu etre analyse.
+
+    Attributs:
+        fichier -- le nom du fichier posant probleme
+        ligne -- le numero de la ligne posant probleme
+        message -- le probleme proprement dit"""
+
+    def __init__(self, fichier, ligne, message):
+        """Constructeur de notre exception"""
+        self.fichier = fichier
+        self.ligne = ligne
+        self.message = message
+
+    def __str__(self):
+        """Affichage de l'exception"""
+        return "[{}:{}]: {}".format(self.fichier, self.ligne, self.message)
+
+
+raise ErreurAnalyseFichier(
+    "plop.conf", 34, "Il manque une paranthese à la fin de l'expression")
+
+"""Decouvrez la boucle for"""
