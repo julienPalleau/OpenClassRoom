@@ -2,7 +2,7 @@ import pickle
 import os
 
 
-""" Example d'import d'un fichier ic multipli contenant des informations necessair à l'execution du programme"""
+""" Example d'import d'un fichier ic multiple contenant des informations necessaire à l'execution du programme"""
 """
 import os
 from multipli import *
