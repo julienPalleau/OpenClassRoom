@@ -303,48 +303,92 @@ inventaire = [
 # On veut trier cette liste par prix et par quantite
 print("Trie de la liste par prix et par quantite:")
 print(sorted(inventaire, key=attrgetter("prix", "quantite")))
-
+print("\n")
 
 """ Gerer les heritages """
 # Creation d'excptions personnalisees
 
 
-class MonException(Exception):
-    """Exception levee dans un certain contexte... qui reste à definir"""
+# class MonException(Exception):
+#     """Exception levee dans un certain contexte... qui reste à definir"""
 
-    def __init__(self, message):
-        """On se contente de stocker le message d'erreur"""
-        self.message = message
+#     def __init__(self, message):
+#         """On se contente de stocker le message d'erreur"""
+#         self.message = message
 
-    def __str__(self):
-        """On renvoie le message"""
-        return self.message
-
-
-#raise MonException("OUPS... j'ai tout casse")
+#     def __str__(self):
+#         """On renvoie le message"""
+#         return self.message
 
 
-class ErreurAnalyseFichier(Exception):
-    """Cette exception est levee quand un fichier (de configuration)
-    n'a pu etre analyse.
-
-    Attributs:
-        fichier -- le nom du fichier posant probleme
-        ligne -- le numero de la ligne posant probleme
-        message -- le probleme proprement dit"""
-
-    def __init__(self, fichier, ligne, message):
-        """Constructeur de notre exception"""
-        self.fichier = fichier
-        self.ligne = ligne
-        self.message = message
-
-    def __str__(self):
-        """Affichage de l'exception"""
-        return "[{}:{}]: {}".format(self.fichier, self.ligne, self.message)
+## raise MonException("OUPS... j'ai tout casse")
 
 
-raise ErreurAnalyseFichier(
-    "plop.conf", 34, "Il manque une paranthese à la fin de l'expression")
+# class ErreurAnalyseFichier(Exception):
+#     """Cette exception est levee quand un fichier (de configuration)
+#     n'a pu etre analyse.
+
+#     Attributs:
+#         fichier -- le nom du fichier posant probleme
+#         ligne -- le numero de la ligne posant probleme
+#         message -- le probleme proprement dit"""
+
+#     def __init__(self, fichier, ligne, message):
+#         """Constructeur de notre exception"""
+#         self.fichier = fichier
+#         self.ligne = ligne
+#         self.message = message
+
+#     def __str__(self):
+#         """Affichage de l'exception"""
+#         return "[{}:{}]: {}".format(self.fichier, self.ligne, self.message)
+
+
+# raise ErreurAnalyseFichier(
+#     "plop.conf", 34, "Il manque une paranthese à la fin de l'expression")
 
 """Decouvrez la boucle for"""
+ma_liste = [1, 2, 3]
+for element in ma_liste:
+    print(element)
+
+
+class RevStr(str):
+    """Classe reprenant les methodes et attributs des chaines construites
+    depuis 'str'. On se contente de definir un methode de parcours differente
+    au lieu de parcourir la chaine de la premiere à la derniere lettre, on la
+    parcourt de la derniere à la premiere.
+
+    Les autres methodes, y compris le constructeur, n'ont pas besoin d'etre redefinies"""
+
+    def __iter__(self):
+        """Cette methode renvoie un iterateur parcourant la chaine
+        dans le sens inverse de celui de 'str'"""
+
+        return ItRevStr(self)  # On renvoie l'iterateur cree pour l'occasion
+
+
+class ItRevStr:
+    """Un iterateur permettant de parcourir une chaine de la derniere lettre
+    à la premiere. On stocke dans des attributs la position courante et la chaine
+    à parcourir"""
+
+    def __init__(self, chaine_a_parcourir):
+        """On se positionne à la fin de la chaine"""
+        self.chaine_a_parcourir = chaine_a_parcourir
+        self.position = len(chaine_a_parcourir)
+
+    def __next__(self):
+        """Cette methode doit renvoyer l'element suivant dans le parcours,
+        ou lever l'exception 'StopIteration' si le parcours es fini"""
+
+        if self.position == 0:  # Fin du parcours
+            raise StopIteration
+        self.position -= 1  # On decremente la position
+        return self.chaine_a_parcourir[self.position]
+
+
+ma_chaine = RevStr("Bonjour")
+print(ma_chaine)
+for lettre in ma_chaine:
+    print(lettre)
