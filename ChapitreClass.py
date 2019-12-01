@@ -392,3 +392,4 @@ ma_chaine = RevStr("Bonjour")
 print(ma_chaine)
 for lettre in ma_chaine:
     print(lettre)
+    print("end")
