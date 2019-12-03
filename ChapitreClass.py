@@ -1,3 +1,4 @@
+import time
 from operator import itemgetter, attrgetter
 
 
@@ -547,3 +548,71 @@ class DictionnaireOrdonnee:
         # Enfin, on met à jour notre liste de cles et de valeurs
         self._cles = cles_triees
         self._valeurs = valeurs
+
+
+"""Apprehendez les decorateurs"""
+
+"""Pour gerer le temps, on importe le module time
+On va utiliser surtout la fonction time() de ce module
+qui renvoie le nombre de secondes ecoulees depuis le premier
+janvier 1970 (habituellement). On va s'en servir pour calculer
+le temps mis par notre fonction pour s'executer"""
+
+
+def controler_temps(nb_secs):
+    """Controle le temps mis par une fonction pour s'executer.
+    Si le temps d'exectution est superieur à nb_secs, on affiche
+    une alerte."""
+
+    def decorateur(fonction_a_executer):
+        """Notre decorateur. C'est lui qui est appele directement LORS
+        DE LA DEFINITION de notre fonction (fonction_a_executer)"""
+
+        def fonction_modifiee(*parametres_non_nommes, **parametres_nommes):
+            """Fonction renvoyee par notre decorateur. Elle se charge
+            de calculer le temps mis par la fonction à s'executer"""
+            tps_avant = time.time()  # Avant d'executer la fonction
+            valeur_renvoyee = fonction_a_executer(
+                *parametres_non_nommes, **parametres_nommes)  # On execute la fonction
+            tps_apres = time.time()
+            tps_execution = tps_apres - tps_avant
+            if tps_execution >= nb_secs:
+                print("La fonction {0} a mis {1} pour s'executer".format(
+                    fonction_a_executer, tps_execution))
+            return valeur_renvoyee
+        return fonction_modifiee
+    return decorateur
+
+
+@controler_temps(4)
+def attendre():
+    input("Appuyez sur Entree...")
+
+
+attendre()
+attendre()
+
+
+"""" Exemples d'applications avec les decorateurs """
+""" Les classes singleton """
+
+
+def singleton(classe_definie):
+    instances = {}  # Dictionnaire de nos instances singletons
+
+    def get_instance():
+        if classe_definie not in instances:
+            # On cree notre premier objet de classe_definie
+            instances[classe_definie] = classe_definie()
+        return instances[classe_definie]
+    return get_instance
+
+
+@singleton
+class Tests:
+    pass
+
+
+a = Tests()
+b = Tests()
+print(a is b)
